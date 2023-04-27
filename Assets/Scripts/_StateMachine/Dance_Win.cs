@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dance_Win : MonoBehaviour
+public class Dance_Win : IState<Character>
 {
     public void OnEnter(Character t)
     {

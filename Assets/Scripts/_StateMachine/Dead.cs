@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dead : MonoBehaviour
+public class Dead : IState<Character>
 {
     public void OnEnter(Character t)
     {

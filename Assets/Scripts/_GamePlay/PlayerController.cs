@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof (BoxCollider))]
 public class PlayerController : MonoBehaviour
 {
     // [SerializeField] private Rigidbody _rigidbody;
@@ -14,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _gravity;
     private void Start() 
     {
-        
+
     }
 
     private void FixedUpdate()

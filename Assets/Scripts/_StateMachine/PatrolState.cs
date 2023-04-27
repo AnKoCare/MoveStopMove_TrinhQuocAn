@@ -10,7 +10,7 @@ public class PatrolState : IState<Character>
     }
 
     public void OnExecute(Character t)
-    {
+    { 
         t.OnPatrolExecute();
     }
 
