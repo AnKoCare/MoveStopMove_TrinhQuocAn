@@ -10,6 +10,8 @@ public class Weapon : MonoBehaviour
     {
         if(other.CompareTag("Character"))
         {
+            Character character = other.GetComponent<Character>();
+            character.ChangeState(new Dead());
             Destroy(gameObject);
             //Destroy(other.gameObject);
         }

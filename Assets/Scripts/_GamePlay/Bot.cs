@@ -20,12 +20,13 @@ public class Bot : Character
     public override void Start()
     {
         base.Start();
+        randomTimeAttack = UnityEngine.Random.Range(0.5f, 1.5f);
         duration = animator.runtimeAnimatorController.animationClips.FirstOrDefault(clip => clip.name == "Attack")?.length ?? 0;
     }
 
     private void Update() 
     {
-        if(character.currentState != null && !character.IsDead)
+        if(character.currentState != null)
         {
             character.currentState.OnExecute(this);
         }  

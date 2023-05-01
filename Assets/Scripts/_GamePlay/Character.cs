@@ -153,6 +153,7 @@ public class Character : MonoBehaviour
     public virtual void OnDeadExecute()
     {
         ChangeAnim("Dead");
+        Invoke("RemoveObj", 2f);
     }   
 
     public virtual void OnDeadExit()
@@ -182,5 +183,8 @@ public class Character : MonoBehaviour
        return Vector3.Distance(gameObject.transform.position ,chars.transform.position); 
     }
 
-    
+    public void RemoveObj()
+    {
+        Destroy(gameObject);
+    }
 }
