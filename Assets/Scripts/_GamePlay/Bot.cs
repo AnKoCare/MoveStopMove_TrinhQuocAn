@@ -49,7 +49,7 @@ public class Bot : Character
         base.OnIdleExecute();
         if(character.IsAttack)
         {
-            randomTimeAttack = UnityEngine.Random.Range(1.0f, 2.0f);
+            randomTimeAttack = UnityEngine.Random.Range(0.5f, 1.5f);
             ChangeState(new AttackState());
         }
         else
@@ -85,6 +85,7 @@ public class Bot : Character
                 ChangeState(new IdleState()); 
             }
         }
+
         if (Vector3.Distance(targetPosition, transform.position)< 1.2f)
         {
             // Tìm vị trí ngẫu nhiên trên NavMesh
@@ -106,6 +107,7 @@ public class Bot : Character
     public override void OnAttackEnter()
     {
         base.OnAttackEnter();
+        IsThrow = true;
     }
 
     public override void OnAttackExecute()

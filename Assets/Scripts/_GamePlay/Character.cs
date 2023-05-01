@@ -6,14 +6,20 @@ public class Character : MonoBehaviour
 {
     [SerializeField] private AttackRange attackRange;
     [SerializeField] private Animator anim;
+
     public List<Character> characterList;
     public bool AttackEnd = true; // bien neu chay het anim attack thi se tra ve true, neu chua chay het se tra ve false
-    public bool IsIdle = false;
-    public bool IsPatrol = false;
-    public bool IsAttack = false;
-    public bool IsDead = false;
-    public bool IsDance = false;
+    public bool IsIdle = false; // biến kiểm tra Idle
+    public bool IsPatrol = false; // biến kiểm tra Patrol
+    public bool IsAttack = false; // biến kiểm tra Attack
+    public bool IsDead = false; // biến kiểm tra Dead
+    public bool IsDance = false; // biến kiểm tra Dance
+    public bool IsThrow = false; // biến kiểm tra ném Weapon
+    public Transform containerWeapon;
+    public GameObject ThrowPoint;
+    private float throwForce = 5f;
     private int pos;
+
     protected string currentAnimName = "Idle";
 
     public IState<Character> currentState;
@@ -21,6 +27,15 @@ public class Character : MonoBehaviour
     public virtual void Start() 
     {
         OnInit();   
+    }
+
+    private void FixedUpdate()
+    {
+        if(IsThrow)
+        {
+            ThrowWeapon();
+            IsThrow = false;
+        }
     }
 
     public virtual void OnInit()
@@ -51,6 +66,12 @@ public class Character : MonoBehaviour
             currentAnimName = animName;
             anim.SetTrigger(currentAnimName);
         }
+    }
+
+    private void ThrowWeapon()
+    {
+        Weapon knife = Instantiate(LevelManager.Ins.knife, ThrowPoint.transform.position, ThrowPoint.transform.rotation);
+        knife.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
     }
 
 

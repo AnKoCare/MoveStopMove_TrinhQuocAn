@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private PlayerController player;
-    public float speed = 5f; // Tốc độ di chuyển của knife
+    public float speed; // Tốc độ di chuyển của knife
 
-    
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.CompareTag("Character"))
+        {
+            Destroy(gameObject);
+            //Destroy(other.gameObject);
+        }
+    }
 }
