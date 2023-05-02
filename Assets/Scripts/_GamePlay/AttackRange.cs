@@ -8,25 +8,29 @@ public class AttackRange : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Character") && gameObject.transform.root != other.transform.root)
+        if(other.CompareTag("Character") && gameObject.transform.root != other.transform.root && !character.IsDead)
         {
             Character chars = other.GetComponent<Character>();
             character.IsAttack = true;
+            if(chars.IsDead) return;
             character.characterList.Add(chars);
         }
     }
 
     private void OnTriggerStay(Collider other) 
     {
-        if(other.CompareTag("Character") && gameObject.transform.root != other.transform.root && character.AttackEnd)
+        if(other.CompareTag("Character") && gameObject.transform.root != other.transform.root && character.AttackEnd && !character.IsDead)
         {
+            Character chars = other.GetComponent<Character>();
             character.IsAttack = true;
+            if(!chars.IsDead) return;
+            character.characterList.Remove(chars);
         }
     }
 
     private void OnTriggerExit(Collider other) 
     {
-        if(other.CompareTag("Character") && gameObject.transform.root != other.transform.root)
+        if(other.CompareTag("Character") && gameObject.transform.root != other.transform.root && !character.IsDead)
         {
             Character chars = other.GetComponent<Character>();
             character.IsAttack = false;
