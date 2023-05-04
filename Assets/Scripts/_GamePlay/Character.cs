@@ -20,7 +20,7 @@ public class Character : MonoBehaviour
     public float timerAttack = 0f; // biến đếm thời gian chạy animation tấn công
     public float duration; // biến lưu thời gian chạy của animation Attack
     public GameObject ThrowPoint;
-    private float throwForce = 5f;
+    private float throwForce = 8f;
     private int pos;
 
     protected string currentAnimName = "Idle";
@@ -134,8 +134,11 @@ public class Character : MonoBehaviour
                 pos = i + 1;
             }
         }
-        gameObject.transform.LookAt(characterList[pos].transform);
-    }
+        if(pos < characterList.Count)
+        {
+            gameObject.transform.LookAt(characterList[pos].transform);
+        }
+    }    
 
     public virtual void OnAttackExecute()
     {

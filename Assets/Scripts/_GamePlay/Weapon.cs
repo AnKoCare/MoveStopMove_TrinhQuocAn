@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public float speed; // Tốc độ di chuyển của knife
 
     private void OnTriggerEnter(Collider other) 
     {

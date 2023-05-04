@@ -716,7 +716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &26067320
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -10001,7 +10001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &729828540
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -13508,7 +13508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &1003201826
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -21590,6 +21590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knife: {fileID: -8520461478808653517, guid: 2a0d0aab3a8674de9b9504e605f6d790, type: 3}
+  BotPrefabs: {fileID: 8967916}
 --- !u!1 &1757366525
 GameObject:
   m_ObjectHideFlags: 0
