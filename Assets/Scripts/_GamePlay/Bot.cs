@@ -12,16 +12,13 @@ public class Bot : Character
     [SerializeField] private Vector3 targetPosition;
     [SerializeField] private Character character;
     public float searchRadius = 10f;
-    private float timerAttack = 0f; // biến đếm thời gian chạy animation tấn công
     private float timerPatrol = 0f; // biến đếm thời gian delay tấn công
     private float randomTimeAttack; // biến random thời gian delay tấn công
-    private float duration; // biến lưu thời gian chạy của animation Attack
 
     public override void Start()
     {
         base.Start();
         randomTimeAttack = UnityEngine.Random.Range(0.5f, 1.5f);
-        duration = animator.runtimeAnimatorController.animationClips.FirstOrDefault(clip => clip.name == "Attack")?.length ?? 0;
     }
 
     private void Update() 

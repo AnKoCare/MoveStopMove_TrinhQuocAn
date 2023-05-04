@@ -11,8 +11,11 @@ public class AttackRange : MonoBehaviour
         if(other.CompareTag("Character") && gameObject.transform.root != other.transform.root && !character.IsDead)
         {
             Character chars = other.GetComponent<Character>();
+            if(chars.IsDead)
+            {
+                return;
+            }
             character.IsAttack = true;
-            if(chars.IsDead) return;
             character.characterList.Add(chars);
         }
     }
@@ -22,9 +25,12 @@ public class AttackRange : MonoBehaviour
         if(other.CompareTag("Character") && gameObject.transform.root != other.transform.root && character.AttackEnd && !character.IsDead)
         {
             Character chars = other.GetComponent<Character>();
+            if(chars.IsDead)
+            {
+                character.characterList.Remove(chars);
+                return;
+            }
             character.IsAttack = true;
-            if(!chars.IsDead) return;
-            character.characterList.Remove(chars);
         }
     }
 

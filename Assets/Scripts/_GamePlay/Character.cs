@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using System;
 
 public class Character : MonoBehaviour
 {
@@ -15,7 +17,8 @@ public class Character : MonoBehaviour
     public bool IsDead = false; // biến kiểm tra Dead
     public bool IsDance = false; // biến kiểm tra Dance
     public bool IsThrow = false; // biến kiểm tra ném Weapon
-    public Transform containerWeapon;
+    public float timerAttack = 0f; // biến đếm thời gian chạy animation tấn công
+    public float duration; // biến lưu thời gian chạy của animation Attack
     public GameObject ThrowPoint;
     private float throwForce = 5f;
     private int pos;
@@ -27,9 +30,10 @@ public class Character : MonoBehaviour
     public virtual void Start() 
     {
         OnInit();   
+        duration = anim.runtimeAnimatorController.animationClips.FirstOrDefault(clip => clip.name == "Attack")?.length ?? 0;
     }
 
-    private void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         if(IsThrow)
         {
@@ -185,6 +189,6 @@ public class Character : MonoBehaviour
 
     public void RemoveObj()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

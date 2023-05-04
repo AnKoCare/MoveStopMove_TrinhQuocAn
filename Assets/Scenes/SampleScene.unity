@@ -195,7 +195,6 @@ MonoBehaviour:
   IsDead: 0
   IsDance: 0
   IsThrow: 0
-  containerWeapon: {fileID: 1637314608}
   ThrowPoint: {fileID: 1637314607}
   navMeshAgent: {fileID: 8967917}
   animator: {fileID: 1513404776}
@@ -371,7 +370,6 @@ MonoBehaviour:
   IsDead: 0
   IsDance: 0
   IsThrow: 0
-  containerWeapon: {fileID: 668024423}
   ThrowPoint: {fileID: 668024419}
   navMeshAgent: {fileID: 26067320}
   animator: {fileID: 1684041697}
@@ -513,7 +511,6 @@ GameObject:
   - component: {fileID: 282580208}
   - component: {fileID: 282580209}
   - component: {fileID: 282580210}
-  - component: {fileID: 282580211}
   m_Layer: 0
   m_Name: Player
   m_TagString: Character
@@ -569,23 +566,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c471fdd7835a844ce83ac2f38a589e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterController: {fileID: 282580209}
-  _joystick: {fileID: 19742128}
-  character: {fileID: 282580211}
-  _moveSpeed: 10
-  _gravity: -9.8
---- !u!114 &282580211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 282580204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b00b7a5741c124ebbbfca34a574dc99d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   attackRange: {fileID: 1850074464}
   anim: {fileID: 1893648040}
   characterList: []
@@ -596,8 +576,12 @@ MonoBehaviour:
   IsDead: 0
   IsDance: 0
   IsThrow: 0
-  containerWeapon: {fileID: 399222915}
   ThrowPoint: {fileID: 399222914}
+  _characterController: {fileID: 282580209}
+  _joystick: {fileID: 19742128}
+  character: {fileID: 282580210}
+  _moveSpeed: 10
+  _gravity: -9.8
 --- !u!1 &399222914
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,7 +609,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399222914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 1.5}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1462,7 +1446,6 @@ MonoBehaviour:
   IsDead: 0
   IsDance: 0
   IsThrow: 0
-  containerWeapon: {fileID: 445193172}
   ThrowPoint: {fileID: 445193171}
   navMeshAgent: {fileID: 729828540}
   animator: {fileID: 1174597384}
@@ -1766,7 +1749,6 @@ MonoBehaviour:
   IsDead: 0
   IsDance: 0
   IsThrow: 0
-  containerWeapon: {fileID: 1872042585}
   ThrowPoint: {fileID: 1872042581}
   navMeshAgent: {fileID: 1003201826}
   animator: {fileID: 178713857}
@@ -2723,7 +2705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d89b00aa89c4ae7b13d8e20b1f75da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 282580211}
+  character: {fileID: 282580210}
 --- !u!1 &1872042581
 GameObject:
   m_ObjectHideFlags: 0
