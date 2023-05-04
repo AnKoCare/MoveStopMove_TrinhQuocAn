@@ -15,5 +15,9 @@ public class Weapon : MonoBehaviour
             Destroy(gameObject);
             //Destroy(other.gameObject);
         }
+        else if(other.CompareTag("Ring"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
