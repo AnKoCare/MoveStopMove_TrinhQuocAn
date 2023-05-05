@@ -9,6 +9,8 @@ public class PlayerController : Character
     [SerializeField] private Character character;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _gravity;
+    [SerializeField] private bool EnableMove = true;
+    
 
 
     private void Update() 
@@ -80,7 +82,10 @@ public class PlayerController : Character
     public override void OnAttackEnter()
     {
         base.OnAttackEnter();
-        IsThrow = true;
+        WeaponModel.gameObject.SetActive(false);
+        AttackEnd = false;
+        CountThrow = 0;
+        //EnableMove = false;
     }
 
     public override void OnAttackExecute()
@@ -90,14 +95,15 @@ public class PlayerController : Character
 
         if (timerAttack >= duration) 
         {
-            // thời gian đếm đã đủ, trả về true
-            AttackEnd = true;
-            timerAttack = 0f;
             ChangeState(new IdleState());
         }
         else
         {
-            AttackEnd = false;
+            if(timerAttack >= 0.3f * duration && CountThrow == 0)
+            {
+                IsThrow = true;
+                CountThrow++;
+            }
             return;
         }
     }
@@ -106,6 +112,9 @@ public class PlayerController : Character
     {
         base.OnAttackExit();
         AttackEnd = true;
+        timerAttack = 0f;
+        //EnableMove = true;
+        WeaponModel.gameObject.SetActive(true);
     }
 
 }

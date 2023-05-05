@@ -8,13 +8,11 @@ public class AttackRange : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Character") && gameObject.transform.root != other.transform.root && !character.IsDead)
+        if(other.CompareTag("Character") && !character.IsDead)
         {
             Character chars = other.GetComponent<Character>();
-            if(chars.IsDead)
-            {
-                return;
-            }
+            if (chars == character) return;
+            if(chars.IsDead) return;
             character.IsAttack = true;
             character.characterList.Add(chars);
         }
@@ -22,9 +20,10 @@ public class AttackRange : MonoBehaviour
 
     private void OnTriggerStay(Collider other) 
     {
-        if(other.CompareTag("Character") && gameObject.transform.root != other.transform.root && character.AttackEnd && !character.IsDead)
+        if(other.CompareTag("Character") && character.AttackEnd && !character.IsDead)
         {
             Character chars = other.GetComponent<Character>();
+            if(chars == character) return;
             if(chars.IsDead)
             {
                 character.characterList.Remove(chars);
@@ -36,9 +35,10 @@ public class AttackRange : MonoBehaviour
 
     private void OnTriggerExit(Collider other) 
     {
-        if(other.CompareTag("Character") && gameObject.transform.root != other.transform.root && !character.IsDead)
+        if(other.CompareTag("Character") && !character.IsDead)
         {
             Character chars = other.GetComponent<Character>();
+            if(chars == character) return;
             character.IsAttack = false;
             character.characterList.Remove(chars);
         }

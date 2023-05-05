@@ -86,10 +86,13 @@ public class Bot : Character
 
         if (Vector3.Distance(targetPosition, transform.position)< 1.2f)
         {
-            // Tìm vị trí ngẫu nhiên trên NavMesh
             targetPosition = RandomNavSphere(transform.position, searchRadius, navMeshAgent.areaMask);
 
-            // Đặt đích cho AI di chuyển đến vị trí đó
+            while(targetPosition.Equals(Vector3.positiveInfinity))
+            {
+                targetPosition = RandomNavSphere(transform.position, searchRadius, navMeshAgent.areaMask);
+            }
+
             navMeshAgent.SetDestination(targetPosition);
         }
     }
@@ -105,7 +108,9 @@ public class Bot : Character
     public override void OnAttackEnter()
     {
         base.OnAttackEnter();
-        IsThrow = true;
+        AttackEnd = false;
+        CountThrow = 0;
+        WeaponModel.gameObject.SetActive(false);
     }
 
     public override void OnAttackExecute()
@@ -116,14 +121,15 @@ public class Bot : Character
 
         if (timerAttack >= duration) 
         {
-            // thời gian đếm đã đủ, trả về true
-            AttackEnd = true;
-            timerAttack = 0f;
             ChangeState(new IdleState()); 
         }
         else
         {
-            AttackEnd = false;
+            if(timerAttack >= 0.3f * duration && CountThrow == 0)
+            {
+                IsThrow = true;
+                CountThrow++;
+            }
             return;
         }
     }
@@ -131,6 +137,27 @@ public class Bot : Character
     public override void OnAttackExit()
     {
         base.OnAttackExit();
+        timerAttack = 0f;
+        AttackEnd = true;
+        WeaponModel.gameObject.SetActive(true);
+    }
+
+
+    //DEAD
+    public override void OnDeadEnter()
+    {
+        base.OnDeadEnter();
+        navMeshAgent.SetDestination(gameObject.transform.position);
+    }
+
+    public override void OnDeadExecute()
+    {
+        base.OnDeadExecute();
+    }
+
+    public override void OnDeadExit()
+    {
+        base.OnDeadExit();
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)

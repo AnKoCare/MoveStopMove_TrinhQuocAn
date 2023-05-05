@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using System;
 
-public class Character : MonoBehaviour
+public class Character : GameUnit
 {
     [SerializeField] private AttackRange attackRange;
     [SerializeField] private Animator anim;
@@ -19,9 +19,11 @@ public class Character : MonoBehaviour
     public bool IsThrow = false; // biến kiểm tra ném Weapon
     public float timerAttack = 0f; // biến đếm thời gian chạy animation tấn công
     public float duration; // biến lưu thời gian chạy của animation Attack
+    public MeshRenderer WeaponModel;
     public GameObject ThrowPoint;
     private float throwForce = 8f;
     private int pos;
+    public int CountThrow;
 
     protected string currentAnimName = "Idle";
 
@@ -42,7 +44,12 @@ public class Character : MonoBehaviour
         }
     }
 
-    public virtual void OnInit()
+    public override void OnInit()
+    {
+
+    }
+
+    public override void OnDespawn()
     {
 
     }
@@ -74,7 +81,10 @@ public class Character : MonoBehaviour
 
     private void ThrowWeapon()
     {
-        Weapon knife = Instantiate(LevelManager.Ins.knife, ThrowPoint.transform.position, ThrowPoint.transform.rotation);
+        //Weapon knife = Instantiate(LevelManager.Ins.knife, ThrowPoint.transform.position, ThrowPoint.transform.rotation);
+        Weapon knife = SimplePool.Spawn<Weapon>(PoolType.Bullet_Knife);
+        knife.transform.position = ThrowPoint.transform.position;
+        knife.transform.rotation = ThrowPoint.transform.rotation;
         knife.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
     }
 
@@ -160,7 +170,7 @@ public class Character : MonoBehaviour
     public virtual void OnDeadExecute()
     {
         ChangeAnim("Dead");
-        Invoke("RemoveObj", 2f);
+        Invoke("DespawnObj", 2f);
     }   
 
     public virtual void OnDeadExit()
@@ -190,8 +200,8 @@ public class Character : MonoBehaviour
        return Vector3.Distance(gameObject.transform.position ,chars.transform.position); 
     }
 
-    public void RemoveObj()
+    public void DespawnObj()
     {
-        gameObject.SetActive(false);
+        SimplePool.Despawn(this);
     }
 }

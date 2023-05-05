@@ -7,14 +7,16 @@ TagManager:
   - Bot
   - Character
   - Ring
+  - FxTemporaire
+  - Obstacle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obstacle
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
