@@ -8,12 +8,14 @@ public class Character : GameUnit
 {
     [SerializeField] private AttackRange attackRange;
     [SerializeField] private Animator anim;
+    [SerializeField] private GameObject ModelCharacter;
 
     public List<Character> characterList;
     public bool AttackEnd = true; // bien neu chay het anim attack thi se tra ve true, neu chua chay het se tra ve false
     public bool IsIdle = false; // biến kiểm tra Idle
     public bool IsPatrol = false; // biến kiểm tra Patrol
     public bool IsAttack = false; // biến kiểm tra Attack
+
     public bool IsDead = false; // biến kiểm tra Dead
     public bool IsDance = false; // biến kiểm tra Dance
     public bool IsThrow = false; // biến kiểm tra ném Weapon
@@ -54,6 +56,12 @@ public class Character : GameUnit
 
     }
 
+    internal void ScaleUp(float size)
+    {
+        attackRange.transform.localScale += new Vector3(size, 0f, size);
+        ModelCharacter.transform.localScale += new Vector3(size * 0.5f,size * 0.5f,size * 0.5f);
+    }
+
     public void ChangeState(IState<Character> newState)
     {
         if(currentState != null)
@@ -85,6 +93,7 @@ public class Character : GameUnit
         Weapon knife = SimplePool.Spawn<Weapon>(PoolType.Bullet_Knife);
         knife.transform.position = ThrowPoint.transform.position;
         knife.transform.rotation = ThrowPoint.transform.rotation;
+        knife.OnInit(this);
         knife.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce, ForceMode.Impulse);
     }
 
@@ -126,6 +135,7 @@ public class Character : GameUnit
     //ATTACK
     public virtual void OnAttackEnter()
     {
+        pos = 0;
         IsAttack = true;
         if(characterList.Count == 0)
         {
@@ -148,6 +158,10 @@ public class Character : GameUnit
         {
             gameObject.transform.LookAt(characterList[pos].transform);
         }
+        else 
+        {
+            Debug.Log(name + ", pos = " + pos);
+        }
     }    
 
     public virtual void OnAttackExecute()
@@ -165,6 +179,7 @@ public class Character : GameUnit
     public virtual void OnDeadEnter()
     {
         IsDead = true;
+        LevelManager.Ins.maxBot --;
     }
 
     public virtual void OnDeadExecute()
@@ -203,5 +218,6 @@ public class Character : GameUnit
     public void DespawnObj()
     {
         SimplePool.Despawn(this);
+        
     }
 }

@@ -123,14 +123,10 @@ public class Bot : Character
         {
             ChangeState(new IdleState()); 
         }
-        else
+        else if(timerAttack >= 0.3f * duration && CountThrow == 0)
         {
-            if(timerAttack >= 0.3f * duration && CountThrow == 0)
-            {
-                IsThrow = true;
-                CountThrow++;
-            }
-            return;
+            IsThrow = true;
+            CountThrow++;
         }
     }
 

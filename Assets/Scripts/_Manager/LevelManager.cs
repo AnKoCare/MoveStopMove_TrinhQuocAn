@@ -7,12 +7,20 @@ public class LevelManager : Singleton<LevelManager>
 {
     public Weapon knife;
     public Bot BotPrefabs;
-    public int maxBot = 20;
+    public int maxBot;
+    public int MaxBotUI;
     private Level currentLevel;
     private int levelIndex;
+    private LevelData currentData;
     public Level[] levelPrefabs;
     public PlayerController player;
-
+    public List<LevelData> DataManager;
+    public Bounds Map;
+    public GameObject Ground;
+    public float xMin;
+    public float zMin;
+    public float xMax;
+    public float zMax;
 
     public void Start() 
     {
@@ -20,25 +28,79 @@ public class LevelManager : Singleton<LevelManager>
         // LoadLevel(levelIndex);
         // OnInit();
 
-        for(int i = 0; i < maxBot; i++)
+        
+    }
+
+    private void Update() 
+    {
+        if(maxBot == MaxBotUI - 5 && maxBot >= 7)
         {
-            Bot bots = SimplePool.Spawn<Bot>(PoolType.Bot);
-            bots.name = "Bot " + i;
-            float x = Random.Range(-47f,47f);
-            float y = Random.Range(-47f,47f);
-            bots.transform.position = Vector3.up * 1.58f + Vector3.forward * y + Vector3.right * x;
+            SpawnBot();
+            MaxBotUI = maxBot;
         }
     }
 
-    // public override void OnInit()
-    // {
-    //     //update navmesh data
-    //     NavMesh.RemoveAllNavMeshData();
-    //     NavMesh.AddNavMeshData(currentLevel.navMeshData);
+    public override void OnInit()
+    {
+        currentData = DataManager[levelIndex];
 
-    //     //Set vi tri player
+        maxBot = currentData.CountEnemy;
+        currentLevel = Instantiate(Resources.Load<Level>("Level/Ground_" + levelIndex));
 
-    // }
+        MaxBotUI = maxBot;
+
+        Map =  currentLevel._renderer.bounds;
+
+        xMin = Map.min.x;
+        zMin = Map.min.z;
+
+        xMax = Map.max.x;
+        zMax = Map.max.z;
+
+        for(int i = 0; i < 10; i++)
+        {
+            float x = Random.Range(xMin, xMax);
+            float z = Random.Range(zMin, zMax);
+
+            while(Vector3.Distance(player.transform.position, Vector3.up * 1.58f + Vector3.forward * z + Vector3.right * x) < 15f)
+            {
+                x = Random.Range(xMin, xMax);
+                z = Random.Range(zMin, zMax);
+            }
+
+            Bot bots = SimplePool.Spawn<Bot>(PoolType.Bot);
+            bots.name = "Bot " + i;
+            
+            bots.transform.position = Vector3.up * 1.58f + Vector3.forward * z + Vector3.right * x;
+        }
+
+        //update navmesh data
+        // NavMesh.RemoveAllNavMeshData();
+        // NavMesh.AddNavMeshData(currentLevel.navMeshData);
+
+        //Set vi tri player
+
+    }
+
+    public void SpawnBot()
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            float x = Random.Range(xMin, xMax);
+            float z = Random.Range(zMin, zMax);
+
+            while(Vector3.Distance(player.transform.position, Vector3.up * 1.58f + Vector3.forward * z + Vector3.right * x) < 15f)
+            {
+                x = Random.Range(xMin, xMax);
+                z = Random.Range(zMin, zMax);
+            }
+
+            Bot bots = SimplePool.Spawn<Bot>(PoolType.Bot);
+            bots.name = "Bot " + i;
+            
+            bots.transform.position = Vector3.up * 1.58f + Vector3.forward * z + Vector3.right * x;
+        }
+    }
 
     public void LoadLevel(int level)
     {

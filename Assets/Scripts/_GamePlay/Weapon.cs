@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Weapon : GameUnit
 {
+    public Character Owner;
 
     public override void OnInit()
     {
 
+    }
+
+    public void OnInit(Character character) 
+    {
+        Owner = character;
     }
 
     public override void OnDespawn()
@@ -20,6 +26,7 @@ public class Weapon : GameUnit
         if(other.CompareTag("Character"))
         {
             Character character = other.GetComponent<Character>();
+            Owner.ScaleUp(0.5f);
             character.ChangeState(new Dead());
             OnDespawn();
             SimplePool.Despawn(this);

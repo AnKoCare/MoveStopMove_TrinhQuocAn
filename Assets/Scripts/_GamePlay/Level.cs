@@ -7,4 +7,6 @@ public class Level : MonoBehaviour
 {
     public NavMeshData navMeshData;
     public Transform startPoint;
+    public Renderer _renderer;
+
 }

@@ -80,7 +80,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4496424339131395520}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -355,6 +355,7 @@ MonoBehaviour:
   poolType: 0
   attackRange: {fileID: 4496424339721554432}
   anim: {fileID: 1555489073802555071}
+  ModelCharacter: {fileID: 5568541557327589846}
   characterList: []
   AttackEnd: 1
   IsIdle: 0
@@ -367,6 +368,7 @@ MonoBehaviour:
   duration: 0
   WeaponModel: {fileID: 3067865874577699898}
   ThrowPoint: {fileID: 4496424339653524747}
+  CountThrow: 0
   navMeshAgent: {fileID: 4496424340206148553}
   animator: {fileID: 1555489073802555071}
   targetPosition: {x: 0, y: 0, z: 0}
@@ -561,6 +563,11 @@ PrefabInstance:
 --- !u!95 &1555489073802555071 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
+  m_PrefabInstance: {fileID: 4496424340913236191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5568541557327589846 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 38f9296dc39c27647a0119314baf12a2, type: 3}
   m_PrefabInstance: {fileID: 4496424340913236191}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7865996777412543654 stripped
