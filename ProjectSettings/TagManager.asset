@@ -9,6 +9,7 @@ TagManager:
   - Ring
   - FxTemporaire
   - Obstacle
+  - ThrowPoint
   layers:
   - Default
   - TransparentFX

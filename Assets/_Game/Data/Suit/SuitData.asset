@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526e380bc1fa847f7b1fd6c8d42dd778, type: 3}
+  m_Name: SuitData
+  m_EditorClassIdentifier: 
+  suitItems:
+  - CharColor: {fileID: 2100000, guid: 9469e0ad4ac7e41a6a46f888579805b8, type: 2}
+    HairItem: {fileID: -2634115071774169692, guid: 23c7dd62471dd4455b0afd2114e58653, type: 3}
+    TailItem: {fileID: 2177170285547682164, guid: 11ce85e63ff904f80b5ec148d0b2a5a9, type: 3}
+    WingItem: {fileID: 9147743022461797210, guid: 3932865baa2144c33a7fb041b745b76f, type: 3}
+    supportItem: {fileID: 4554734507825300017, guid: ad0c00bc7954547dcb0976d8457dd200, type: 3}
+    NameSuit: Set 1
+    Speed: 0
+    Description: 8% Range
+    Price: 2500
+    IsUnlocked: 1
+    IsEquipped: 0
+  - CharColor: {fileID: 2100000, guid: 271e5bb8440fc496dbc450a70bdb8fb2, type: 2}
+    HairItem: {fileID: -6659014548758267277, guid: 88651995d365c419bb3cc057a6a890b9, type: 3}
+    TailItem: {fileID: 828886548864207921, guid: 09c208de25b9f46ddaad71a577caf1b6, type: 3}
+    WingItem: {fileID: -5263339758234565515, guid: 95ee0cd38d9774d8da2361733f763d0c, type: 3}
+    supportItem: {fileID: -7775159495526467207, guid: e3b0d6e6e079b4b66801a7eede2dddc8, type: 3}
+    NameSuit: Set 2
+    Speed: 0
+    Description: 11% move speed
+    Price: 2500
+    IsUnlocked: 0
+    IsEquipped: 0
+  - CharColor: {fileID: 2100000, guid: 3d25659694e6d4b65a6e0b4bbdcd138d, type: 2}
+    HairItem: {fileID: 129675171314462846, guid: d28b4ff1495fc486da007e0b84956672, type: 3}
+    TailItem: {fileID: 828886548864207921, guid: 09c208de25b9f46ddaad71a577caf1b6, type: 3}
+    WingItem: {fileID: 3281946752563334792, guid: 731180a4ed4f941e0a454419bbe33dbd, type: 3}
+    supportItem: {fileID: 506650920738972219, guid: 38f56883a46af44928e748b421df66cd, type: 3}
+    NameSuit: Set 3
+    Speed: 0
+    Description: 50% Gold
+    Price: 2500
+    IsUnlocked: 1
+    IsEquipped: 1
+  - CharColor: {fileID: -3620572297651811420, guid: 595d67a9cc58543b296d842ee584e3d8, type: 3}
+    HairItem: {fileID: 6450390387344818156, guid: e70511c966df844fb881c62a1f885f82, type: 3}
+    TailItem: {fileID: 828886548864207921, guid: 09c208de25b9f46ddaad71a577caf1b6, type: 3}
+    WingItem: {fileID: 3281946752563334792, guid: 731180a4ed4f941e0a454419bbe33dbd, type: 3}
+    supportItem: {fileID: 4554734507825300017, guid: ad0c00bc7954547dcb0976d8457dd200, type: 3}
+    NameSuit: 
+    Speed: 0
+    Description: 
+    Price: 0
+    IsUnlocked: 0
+    IsEquipped: 0

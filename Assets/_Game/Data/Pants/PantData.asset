@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf1337e0bbdd467485603e94624fa77, type: 3}
+  m_Name: PantData
+  m_EditorClassIdentifier: 
+  pantsItems:
+  - Pant: {fileID: 2100000, guid: 56507925b90e6964bab4a55527cb611d, type: 2}
+    NamePant: Batman
+    Speed: 5
+    Description: 5% Move Speed
+    Price: 500
+    IsUnlocked: 0
+    IsEquipped: 0
+  - Pant: {fileID: 2100000, guid: e7d8d0a10e588f2409bfbb0f549617b1, type: 2}
+    NamePant: Chambi
+    Speed: 6
+    Description: 6% Move Speed
+    Price: 600
+    IsUnlocked: 0
+    IsEquipped: 0
+  - Pant: {fileID: 2100000, guid: 6161653da91d90547b0e4f1a419fa852, type: 2}
+    NamePant: Comy
+    Speed: 7
+    Description: 7% Move Speed
+    Price: 700
+    IsUnlocked: 0
+    IsEquipped: 0
+  - Pant: {fileID: 2100000, guid: 1e786ed702ab058408f7ae85d8963e08, type: 2}
+    NamePant: Dabao
+    Speed: 8
+    Description: 8% Move Speed
+    Price: 800
+    IsUnlocked: 0
+    IsEquipped: 0
+  - Pant: {fileID: 2100000, guid: 37d95ae247dc5df4f89008d3e1925b8e, type: 2}
+    NamePant: Onion
+    Speed: 9
+    Description: 9% Move Speed
+    Price: 900
+    IsUnlocked: 0
+    IsEquipped: 0
+  - Pant: {fileID: 2100000, guid: 8b1736e9fe183b042b56931fd45ca6b5, type: 2}
+    NamePant: Pokemon
+    Speed: 10
+    Description: 10% Move Speed
+    Price: 1000
+    IsUnlocked: 0
+    IsEquipped: 0
+  - Pant: {fileID: 2100000, guid: 6e909eb25e129c947b68e9bd72e4023d, type: 2}
+    NamePant: Rainbow
+    Speed: 11
+    Description: 11% Move Speed
+    Price: 1100
+    IsUnlocked: 0
+    IsEquipped: 0
+  - Pant: {fileID: 2100000, guid: dcc2670967dc37f4786fbf1e6c4bca2b, type: 2}
+    NamePant: Skull
+    Speed: 12
+    Description: 12% Move Speed
+    Price: 1200
+    IsUnlocked: 0
+    IsEquipped: 0
+  - Pant: {fileID: 2100000, guid: 209b8e5c5ab2acd4fa06e5db76d94d8d, type: 2}
+    NamePant: Vantim
+    Speed: 13
+    Description: 13% Move Speed
+    Price: 1300
+    IsUnlocked: 0
+    IsEquipped: 0
+  - Pant: {fileID: 15302, guid: 0000000000000000f000000000000000, type: 0}
+    NamePant: EmptyPant
+    Speed: 0
+    Description: 0
+    Price: 0
+    IsUnlocked: 0
+    IsEquipped: 0
