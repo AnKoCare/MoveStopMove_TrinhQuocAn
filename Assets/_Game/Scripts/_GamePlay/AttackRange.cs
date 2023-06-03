@@ -16,6 +16,12 @@ public class AttackRange : MonoBehaviour
             character.characterList.Add(chars);
             chars.onDespawnEvent += () => {character.characterList.Remove(chars);};
         }
+
+        if(other.CompareTag(Constant.TAG_OBSTACLE) && character == LevelManager.Ins.player)
+        {
+            Obstacle obstacle = Cache.GetObstacle(other);
+            obstacle.meshRendererObstacle.material = LevelManager.Ins.colorDataManager.GetColor(ColorsType.Transparent).Color;
+        }
     }
 
     private void OnTriggerExit(Collider other) 
@@ -26,6 +32,12 @@ public class AttackRange : MonoBehaviour
             if(chars == character) return;
             character.isAttack = false;
             character.characterList.Remove(chars);
+        }
+
+        if(other.CompareTag(Constant.TAG_OBSTACLE) && character == LevelManager.Ins.player)
+        {
+            Obstacle obstacle = Cache.GetObstacle(other);
+            obstacle.meshRendererObstacle.material = obstacle.materialOrigin;
         }
     }
 

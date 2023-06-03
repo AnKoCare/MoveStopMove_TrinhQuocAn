@@ -15,18 +15,18 @@ MonoBehaviour:
   supportsItems:
   - SupportItem: {fileID: -4290106962541473390, guid: b56697b5be3a14049a2b002e2952e92f, type: 3}
     NameSupportItem: Normal Shield
-    Gold: 25
-    Description: 25% Gold
+    Gold: 5
+    Description: 100% Gold
     Price: 500
-    IsUnlocked: 0
+    IsUnlocked: 1
     IsEquipped: 0
   - SupportItem: {fileID: 992482753871386545, guid: a7a39de27db934d0a9e451ced0a478c0, type: 3}
     NameSupportItem: Captain Shield
-    Gold: 30
-    Description: 30% Gold
+    Gold: 15
+    Description: 200% Gold
     Price: 1000
     IsUnlocked: 1
-    IsEquipped: 1
+    IsEquipped: 0
   - SupportItem: {fileID: 4554734507825300017, guid: ad0c00bc7954547dcb0976d8457dd200, type: 3}
     NameSupportItem: 
     Gold: 0

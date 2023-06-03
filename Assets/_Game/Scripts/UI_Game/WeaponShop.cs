@@ -80,6 +80,7 @@ public class WeaponShop : UICanvas
     {
         LevelManager.Ins.player.RemoveWeapon();
         LevelManager.Ins.player.weaponType = (WeaponType)currentIndex;
+        LevelManager.Ins.player.SetUpWeaponAndHairIndicator();
         for(int i = 0; i < 9; i++)
         {
             if(weaponData.GetWeapon((WeaponType)i).IsEquipped == true)

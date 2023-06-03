@@ -121,11 +121,15 @@ public class SupportItemShop : UICanvas
     {  
         if(!supportItemData.GetSupportItem((SupportsType)currentIndex).IsEquipped)
         {
-            UnEquipItem();
             LevelManager.Ins.player.RemoveSupportItem();
+            if(LevelManager.Ins.player.suitType != SuitType.EmptySuit)
+            {
+                UnEquipItem();
+            }
             LevelManager.Ins.player.supportsType = (SupportsType)currentIndex;
             LevelManager.Ins.player.SetSupportItem(LevelManager.Ins.player.supportsType);
             supportItemData.GetSupportItem(LevelManager.Ins.player.supportsType).IsEquipped = true;
+            LevelManager.Ins.player.SetUpSupportItemIndicator();
             for(int i = 0; i < 2; i ++)
             {
                 if(supportItemData.GetSupportItem((SupportsType)i).IsEquipped == true && supportItemData.GetSupportItem((SupportsType)i) != supportItemData.GetSupportItem(LevelManager.Ins.player.supportsType))

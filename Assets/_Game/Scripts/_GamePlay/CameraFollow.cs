@@ -23,7 +23,7 @@ public class CameraFollow : Singleton<CameraFollow>
 
     public void SetupGamePlay()
     {
-        offset = new Vector3(0,20,-20);
+        offset = new Vector3(0,16,-16);
         transform.localRotation = Quaternion.Euler(40f,0,0);
     }
 

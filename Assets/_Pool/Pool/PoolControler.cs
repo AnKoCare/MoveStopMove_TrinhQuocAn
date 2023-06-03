@@ -152,7 +152,10 @@ public enum PoolType
     Bullet_Candy_2 = 6,
     Bullet_Candy_4 = 7,
     Bullet_Hammer = 8,
-    Bot = 9
+    Bot = 9,
+    MissionWaypoint = 10,
+    MissionWayPoint2 = 11,
+    NoticeKiller = 12
 }
 
 

@@ -15,73 +15,73 @@ MonoBehaviour:
   hairItems:
   - HairItem: {fileID: 5585779955598070305, guid: 5c921e94d2d4849a49c9e46744fe529e, type: 3}
     NameHair: Arrow
-    Range: 5
+    Range: 0.2
     Price: 500
     Description: 5% Range
     IsUnlocked: 0
     IsEquipped: 0
   - HairItem: {fileID: 2805745023273645408, guid: becf76f29949348ac822e581b75a3167, type: 3}
     NameHair: Cowboy
-    Range: 6
+    Range: 0.21
     Price: 600
     Description: 6% Range
-    IsUnlocked: 0
+    IsUnlocked: 1
     IsEquipped: 0
   - HairItem: {fileID: -2133069035090365572, guid: 5497d418b97bd442cbac95ab459286e3, type: 3}
     NameHair: Crown
-    Range: 7
+    Range: 0.22
     Price: 700
     Description: 7% Range
-    IsUnlocked: 0
+    IsUnlocked: 1
     IsEquipped: 0
   - HairItem: {fileID: -7881987574178752032, guid: 22654cbac09dc4a45b23fa9f00f20d88, type: 3}
     NameHair: Ear
-    Range: 8
+    Range: 0.23
     Price: 800
     Description: 8% Range
     IsUnlocked: 0
     IsEquipped: 0
   - HairItem: {fileID: 7725274871785833326, guid: 9655817c6e50d4615912435756c571ad, type: 3}
     NameHair: Hat
-    Range: 9
+    Range: 0.24
     Price: 900
     Description: 9% Range
     IsUnlocked: 0
     IsEquipped: 0
   - HairItem: {fileID: 5519919754694230944, guid: a24724e6c3409410399abfbea9a62de4, type: 3}
     NameHair: Hat_Cap
-    Range: 10
+    Range: 0.25
     Price: 1000
     Description: 10% Range
     IsUnlocked: 1
     IsEquipped: 0
   - HairItem: {fileID: -4142194039903322404, guid: 74a890f72dccf4f30a2fbd41d4b9c6ea, type: 3}
     NameHair: Hat_Yellow
-    Range: 11
+    Range: 0.26
     Price: 1100
     Description: 11% Range
-    IsUnlocked: 0
+    IsUnlocked: 1
     IsEquipped: 0
   - HairItem: {fileID: -5772928397008161686, guid: 9f74fc659622b4801878083a0c368207, type: 3}
     NameHair: HeadPhone
-    Range: 12
+    Range: 0.27
     Price: 1200
     Description: 12% Range
     IsUnlocked: 0
     IsEquipped: 0
   - HairItem: {fileID: -2634115071774169692, guid: 23c7dd62471dd4455b0afd2114e58653, type: 3}
     NameHair: Horn
-    Range: 13
+    Range: 0.28
     Price: 1300
     Description: 13% Range
     IsUnlocked: 0
     IsEquipped: 0
   - HairItem: {fileID: 7646729091182185529, guid: c10cb5e44257147a4bdc475173db0d1c, type: 3}
     NameHair: Rau
-    Range: 14
+    Range: 0.3
     Price: 1400
     Description: 14% Range
-    IsUnlocked: 0
+    IsUnlocked: 1
     IsEquipped: 0
   - HairItem: {fileID: 6450390387344818156, guid: e70511c966df844fb881c62a1f885f82, type: 3}
     NameHair: EmptyHair

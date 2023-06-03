@@ -234,10 +234,14 @@ public class PantShop : UICanvas
         if(!pantsData.GetPants((PantsType)currentIndex).IsEquipped)
         {
             LevelManager.Ins.player.RemovePant();
+            if(LevelManager.Ins.player.suitType != SuitType.EmptySuit)
+            {
+                UnEquipItem();
+            }
             LevelManager.Ins.player.pantsType = (PantsType)currentIndex;
             LevelManager.Ins.player.SetPant(LevelManager.Ins.player.pantsType);
-            UnEquipItem();
             pantsData.GetPants(LevelManager.Ins.player.pantsType).IsEquipped = true;
+            LevelManager.Ins.player.SetUpPantIndicator();
             for(int i = 0; i < 9; i ++)
             {
                 if(pantsData.GetPants((PantsType)i).IsEquipped == true && pantsData.GetPants((PantsType)i) != pantsData.GetPants(LevelManager.Ins.player.pantsType))

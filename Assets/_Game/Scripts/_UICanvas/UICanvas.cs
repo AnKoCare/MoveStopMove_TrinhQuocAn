@@ -80,8 +80,6 @@ public class UICanvas : MonoBehaviour
         LevelManager.Ins.player.RemoveCharacterColor();
         LevelManager.Ins.player.RemoveTailItem();
         LevelManager.Ins.player.RemoveWingItem();
-        // LevelManager.Ins.player.RemoveTailItem();
-        // LevelManager.Ins.player.RemoveWingItem();
     }
 
 
@@ -130,5 +128,9 @@ public enum UIID
     Gameplay = 4,
     PantShop = 5,
     SupportItemShop = 6,
-    SuitShop = 7
+    SuitShop = 7,
+    UIRevive = 8,
+    UIGameOver = 9,
+    UIPauseGame = 10,
+    UINotice = 11
 }

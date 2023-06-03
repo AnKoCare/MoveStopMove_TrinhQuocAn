@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PlayerController : Character
 {
-    [SerializeField] private FixedJoystick joystick;
+    [SerializeField] private FloatingJoystick joystick;
     [SerializeField] private Character character;
-    [SerializeField] private float moveSpeed;
     [SerializeField] private float rotateSpeed;
     [SerializeField] private Rigidbody rigibody;
     [SerializeField] private bool EnableMove = true;
-    [SerializeField] private bool AttackEnd = true;
+    public bool AttackEnd = true;
+
+    public int numberKillBot = 0;
+
+    public int rankPlayer;
+
     public int coin = 0;
 
     public int startingCoin; // Số vàng khởi đầu
@@ -26,6 +30,7 @@ public class PlayerController : Character
             if(weaponData.GetWeapon((WeaponType)i).IsEquipped)
             {
                 LevelManager.Ins.player.weaponType = (WeaponType)i;
+                SetUpWeaponAndHairIndicator();
                 break;
             }
         }
@@ -34,6 +39,7 @@ public class PlayerController : Character
             if(hairData.GetHair((HairsType)i).IsEquipped)
             {
                 LevelManager.Ins.player.hairsType = (HairsType)i;
+                SetUpWeaponAndHairIndicator();
                 break;
             }
         }
@@ -42,6 +48,7 @@ public class PlayerController : Character
             if(pantsData.GetPants((PantsType)i).IsEquipped)
             {
                 LevelManager.Ins.player.pantsType = (PantsType)i;
+                SetUpPantIndicator();
                 break;
             }
         }
@@ -50,6 +57,7 @@ public class PlayerController : Character
             if(supportItemData.GetSupportItem((SupportsType)i).IsEquipped)
             {
                 LevelManager.Ins.player.supportsType = (SupportsType)i;
+                SetUpSupportItemIndicator();
                 break;
             }
         }
@@ -208,6 +216,13 @@ public class PlayerController : Character
         WeaponModel.gameObject.SetActive(true);
     }
 
+    public override void OnDeadEnter()
+    {
+        base.OnDeadEnter();
+        rankPlayer = LevelManager.Ins.maxBot;
+        UIManager.Ins.OpenUI(UIID.UIRevive);
+    }
+
 
     public void UpCoin(int number)
     {
@@ -219,5 +234,10 @@ public class PlayerController : Character
     {
         coin -= price;
         PlayerPrefs.SetInt(goldKey, coin);
+    }
+
+    public void SetNumberKillBot(int number)
+    {
+        numberKillBot += number;
     }
 }

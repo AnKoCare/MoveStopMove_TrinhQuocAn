@@ -19,11 +19,11 @@ public class Bot : Character
     {
         base.Start();
         randomTimeAttack = UnityEngine.Random.Range(0.5f, 1.5f);
+        
     }
 
     private void Update() 
     {
-        //Debug.Log(GameManager.Ins.IsState(GameState.Gameplay));
         if(GameManager.Ins.IsState(GameState.Gameplay) &&  character.currentState != null)
         {
             character.currentState.OnExecute(this);
@@ -53,6 +53,17 @@ public class Bot : Character
         SupportsType supportsTypeBot = supportsTypesValues[UnityEngine.Random.Range(0,supportsTypesValues.Length)];
         supportsType = supportsTypeBot;
         SetSupportItem(supportsTypeBot);
+
+        ColorsType[] colorsTypesValues = (ColorsType[])Enum.GetValues(typeof(ColorsType));
+        ColorsType colorsTypeBot = colorsTypesValues[UnityEngine.Random.Range(0,colorsTypesValues.Length)];
+        colorsTypeChar = colorsTypeBot;
+        SetColorBot(colorsTypeChar);
+
+        nameChar = GetRandomBotName();
+
+        navMeshAgent.speed = moveSpeed;
+
+        ScaleUp();
 
         ChangeState(new PatrolState());
     }
@@ -173,6 +184,7 @@ public class Bot : Character
     {
         base.OnDeadEnter();
         navMeshAgent.SetDestination(gameObject.transform.position);
+        
     }
 
     public override void OnDeadExecute()
@@ -183,6 +195,11 @@ public class Bot : Character
     public override void OnDeadExit()
     {
         base.OnDeadExit();
+    }
+
+    public void SetMoveSpeedBot()
+    {
+        navMeshAgent.speed = moveSpeed;
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)

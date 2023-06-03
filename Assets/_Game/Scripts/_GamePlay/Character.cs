@@ -11,11 +11,13 @@ public class Character : GameUnit
     [SerializeField] private Animator anim;
     [SerializeField] private GameObject ModelCharacter;
 
+    public float moveSpeed;
+
     readonly Vector3 originSize = new Vector3(1,0,1);
 
     [SerializeField] private Vector3 originRingSize; 
     
-    [SerializeField] private BoxCollider boxCollider;
+    public BoxCollider boxCollider;
     
     [SerializeField] private SkinnedMeshRenderer skinnedMeshRendererPant;
 
@@ -23,11 +25,29 @@ public class Character : GameUnit
 
     [SerializeField] private Transform Hair;
 
+    public string nameKiller;
+
+    public string nameChar;
+
+    public MissionWaypoint missionWaypoint;
+
+    public MissionWayPoint2 missionWayPoint2;
+
+    public int LevelCharacter = 1;
+
+    public ColorData colorData;
+
+    public ColorsType colorsTypeChar;
+
     public HairData hairData;
 
     public HairsType hairsType;
     
     public float sizeCharacter;
+
+    public float sizeRing;
+
+    public float rateUpGold;
 
     private GameObject Pant;
 
@@ -77,8 +97,20 @@ public class Character : GameUnit
 
     public virtual void Start() 
     {
+        missionWaypoint = SimplePool.Spawn<MissionWaypoint>(PoolType.MissionWaypoint);
+        missionWaypoint.OnInit(this);
+        
+        missionWaypoint.target = this.transform;
+
+        missionWayPoint2 = SimplePool.Spawn<MissionWayPoint2>(PoolType.MissionWayPoint2);
+        missionWayPoint2.OnInit(this);
+        
+        missionWayPoint2.target = this.transform;
+
         originRingSize = Vector3.forward * attackRange.transform.localScale.z + Vector3.right * attackRange.transform.localScale.x;
         OnInit();   
+        missionWaypoint.imgDir.color = colorData.GetColor(colorsTypeChar).Color.color;
+        missionWayPoint2.imgPoint.color = colorData.GetColor(colorsTypeChar).Color.color;
         duration = anim.runtimeAnimatorController.animationClips.FirstOrDefault(clip => clip.name == "Attack")?.length ?? 0;
     }
 
@@ -98,9 +130,14 @@ public class Character : GameUnit
     }
 
     
-    internal void ScaleUp()
+    public void ScaleUp()
     {
-        SetSize(sizeCharacter + 0.05f);
+        this.LevelCharacter ++;
+        this.sizeCharacter += 0.2f;
+        this.sizeRing += 0.3f;
+        this.moveSpeed += 0.4f;
+        SetSizeChar(sizeCharacter);
+        SetSizeRing(sizeRing);
     }
 
     public void OnKillUp()
@@ -112,15 +149,18 @@ public class Character : GameUnit
     {
         ChangeState(new Dead());
     }
-
     
     //TODO: set chi so thay vi scale up
-    private void SetSize(float size)
+    public void SetSizeChar(float size)
     {
-        this.sizeCharacter = size;
+        
         //TODO: cache transform
-        attackRange.transform.localScale = originSize * (attackRange.transform.localScale.x * size) + Vector3.up * 0.1f;
         ModelCharacter.transform.localScale = Vector3.one * (size);
+    }
+
+    public void SetSizeRing(float size)
+    {
+        attackRange.transform.localScale = originSize * (originRingSize.x * (100+size*20)/100) + Vector3.up * 0.1f;
     }
 
     public void ChangeState(IState<Character> newState)
@@ -232,8 +272,12 @@ public class Character : GameUnit
     public virtual void OnDeadEnter()
     {
         isDead = true;
+        LevelManager.Ins.SpawnNotice(nameKiller,nameChar);
         LevelManager.Ins.maxBot --;
+        LevelManager.Ins.currentBot --;
         boxCollider.enabled = false;
+        SimplePool.Despawn(missionWaypoint);
+        SimplePool.Despawn(missionWayPoint2);
         onDespawnEvent?.Invoke();
         ChangeAnim("Dead");
         Invoke("DespawnObj", 2f);
@@ -241,7 +285,7 @@ public class Character : GameUnit
 
     public virtual void OnDeadExecute()
     {
-        
+
     }   
 
     public virtual void OnDeadExit()
@@ -291,7 +335,6 @@ public class Character : GameUnit
     public void DespawnObj()
     {
         SimplePool.Despawn(this);
-        
     }
 
     public WeaponModel ChangeWeapon(WeaponType weaponType)
@@ -329,13 +372,23 @@ public class Character : GameUnit
         return Instantiate(suitData.GetSuit(wingType).WingItem);
     }
 
+    public Material ChangeColor(ColorsType colorsType)
+    {
+        return Instantiate(colorData.GetColor(colorsType).Color);
+    }
+
+    public void SetColorBot(ColorsType type)
+    {
+        Material color = ChangeColor(type);
+        skinnedMeshRendererCharacter.material = color;
+    }
+
     public void SetWeapon(WeaponType type)
     {
         WeaponModel weapon = ChangeWeapon(type);
         weapon.transform.SetParent(WeaponHold);
         weapon.transform.localPosition = weaponData.GetWeapon(type).WeaponModel.transform.localPosition;
         weapon.transform.localRotation = weaponData.GetWeapon(type).WeaponModel.transform.localRotation;
-        UpRingWeapon(weaponData.GetWeapon(type).Range);
     }
 
     public void RemoveWeapon()
@@ -350,11 +403,12 @@ public class Character : GameUnit
     public void SetPant(PantsType type)
     {
         skinnedMeshRendererPant.material = pantsData.GetPants(type).Pant;
+
     }
 
     public void RemovePant()
     {
-        skinnedMeshRendererPant.material = pantsData.GetPants((PantsType)9).Pant;
+        skinnedMeshRendererPant.material = pantsData.GetPants(PantsType.EmptyPant).Pant;
     }
 
 //TODO: nen co dau vao cu the
@@ -364,7 +418,6 @@ public class Character : GameUnit
         hair.transform.SetParent(Hair);
         hair.transform.localPosition = hairData.GetHair(type).HairItem.transform.localPosition;
         hair.transform.localRotation = hairData.GetHair(type).HairItem.transform.localRotation;
-        UpRingHair(hairData.GetHair(type).Range);
     }
 
     public void SetHairSuit(SuitType type)
@@ -453,14 +506,41 @@ public class Character : GameUnit
         skinnedMeshRendererCharacter.material = suitData.GetSuit((SuitType)3).CharColor;
     }
 
-    public void UpRingHair(float size)
+    public void SetUpPantIndicator()
     {
-        attackRange.transform.localScale = originSize * (originRingSize.x * (100+size)/100) + Vector3.up * 0.1f;
+        moveSpeed = 5f + pantsData.GetPants(pantsType).Speed;
     }
 
-    public void UpRingWeapon(float size)
+    public void SetUpSupportItemIndicator()
     {
-        attackRange.transform.localScale = originSize * (originRingSize.x * (100+size)/100) + Vector3.up * 0.1f;
+        rateUpGold = 5f + supportItemData.GetSupportItem(supportsType).Gold;
+    }
+
+    public void SetUpWeaponAndHairIndicator()
+    {
+        sizeRing = 1f + weaponData.GetWeapon(LevelManager.Ins.player.weaponType).Range + hairData.GetHair(hairsType).Range;
+    }
+
+    public string GetRandomBotName()
+    {
+        if (LevelManager.Ins.usedNames.Count == LevelManager.Ins.botNames.Count)
+        {
+            // Đã sử dụng hết tất cả các tên có sẵn
+            return "No more names available";
+        }
+
+        string randomName = "";
+
+        do
+        {
+            int randomIndex = UnityEngine.Random.Range(0, LevelManager.Ins.botNames.Count); // Chọn một chỉ số ngẫu nhiên từ danh sách tên
+            randomName = LevelManager.Ins.botNames[randomIndex]; // Lấy tên tại chỉ số ngẫu nhiên
+        }
+        while (LevelManager.Ins.usedNames.Contains(randomName)); // Lặp lại cho đến khi tìm được tên chưa được sử dụng
+
+        LevelManager.Ins.usedNames.Add(randomName); // Đánh dấu tên đã được sử dụng
+
+        return randomName;
     }
 
 }

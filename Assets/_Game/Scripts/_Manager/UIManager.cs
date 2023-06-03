@@ -102,6 +102,16 @@ public class UIManager : Singleton<UIManager>
     //Get component UI 
     //lay component cua UI hien tai
 
+    public T GetUI<T>(UIID ID) where T : UICanvas
+    { 
+        if (!IsLoaded(ID))
+        {
+            UICanvas canvas = Instantiate(GetUIPrefab(ID), CanvasParentTF);
+            uiCanvas[canvas.ID] = canvas;
+        }
+        return uiCanvas[ID] as T;
+    }
+    
     public UICanvas GetUI(UIID ID)
     { 
         if (!IsLoaded(ID))
@@ -111,6 +121,7 @@ public class UIManager : Singleton<UIManager>
         }
         return uiCanvas[ID];
     }
+    
 
     //Close all UI
     //dong tat ca UI ngay lap tuc -> tranh truong hop dang mo UI nao dong ma bi chen 2 UI cung mot luc

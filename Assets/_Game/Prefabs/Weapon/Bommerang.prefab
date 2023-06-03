@@ -49,11 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolType: 2
   weaponData: {fileID: 11400000, guid: 9d87ff5a056de48f59125d6af57181a6, type: 2}
-  Owner: {fileID: 0}
+  Hit_VFX: {fileID: 893158140678593356, guid: 71e02098ec35943dc8b26f6eb682691a, type: 3}
   rb: {fileID: -2393212344385118418}
   rotationSpeed: 1000
   weaponTransform: {fileID: 3767640937495360855}
-  isGoBack: 0
 --- !u!65 &1082378010848821657
 BoxCollider:
   m_ObjectHideFlags: 0

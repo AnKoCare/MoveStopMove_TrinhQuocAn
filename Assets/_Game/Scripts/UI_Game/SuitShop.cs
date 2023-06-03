@@ -102,10 +102,10 @@ public class SuitShop : UICanvas
     {  
         if(!suitData.GetSuit((SuitType)currentIndex).IsEquipped)
         {
+            UnEquipItem();
             RemoveItemSuit();
             LevelManager.Ins.player.suitType = (SuitType)currentIndex;
             SetUpItemSuit(LevelManager.Ins.player.suitType);
-            UnEquipItem();
             suitData.GetSuit(LevelManager.Ins.player.suitType).IsEquipped = true;
             for(int i = 0; i < 3; i ++)
             {

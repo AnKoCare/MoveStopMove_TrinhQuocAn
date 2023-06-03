@@ -19,8 +19,8 @@ MonoBehaviour:
     WeaponImage: {fileID: 21300000, guid: 29cf7060a95599b45b5032a6a3cd1798, type: 3}
     WeaponName: Axe_0
     description: +15 Range
-    Speed: 10
-    Range: 15
+    Speed: 12
+    Range: 0.2
     attackSpeed: 0
     Prices: 500
     goBack: 0
@@ -28,12 +28,12 @@ MonoBehaviour:
     IsEquipped: 0
   - WeaponModel: {fileID: 3283937148722239222, guid: c5efcd4885ce248d88bd95a560016df5, type: 3}
     Weapons: {fileID: 420539225119083598, guid: 3691e1bbf81224395baad3ce7a96a334, type: 3}
-    IsUnlocked: 0
+    IsUnlocked: 1
     WeaponImage: {fileID: 21300000, guid: dd47ffa33ce48924eb157693923298bb, type: 3}
     WeaponName: Axe_1
     description: +20 Range
-    Speed: 10
-    Range: 20
+    Speed: 12
+    Range: 0.3
     attackSpeed: 0
     Prices: 600
     goBack: 0
@@ -41,12 +41,12 @@ MonoBehaviour:
     IsEquipped: 0
   - WeaponModel: {fileID: 1608851109203603725, guid: f3402d2f7b98b4934992545085b66c67, type: 3}
     Weapons: {fileID: -5011927041565348964, guid: b124ffa5e3c784b6fae2bf0363725e33, type: 3}
-    IsUnlocked: 0
+    IsUnlocked: 1
     WeaponImage: {fileID: 21300000, guid: 850560a3d5d05414985431b7fe969284, type: 3}
     WeaponName: Bommerang
     description: + 5 Range
-    Speed: 10
-    Range: 5
+    Speed: 12
+    Range: 0.1
     attackSpeed: 0
     Prices: 700
     goBack: 1
@@ -58,21 +58,21 @@ MonoBehaviour:
     WeaponImage: {fileID: 21300000, guid: 33c349a86a058c34196d38bf8d1d2ca9, type: 3}
     WeaponName: Knife
     description: + 5 Attack Speed
-    Speed: 12
+    Speed: 15
     Range: 0
-    attackSpeed: 5
+    attackSpeed: 1
     Prices: 800
     goBack: 0
     rotate: 0
-    IsEquipped: 0
+    IsEquipped: 1
   - WeaponModel: {fileID: 751537346889401547, guid: 26aa273ea537244f59997f587d5680d5, type: 3}
     Weapons: {fileID: 3028696249976085898, guid: 4622a9afb9fa54eebade4210d39f5e23, type: 3}
     IsUnlocked: 1
     WeaponImage: {fileID: 21300000, guid: 82541a9d027d1ef459d4baf465a125ce, type: 3}
     WeaponName: Candy_0
     description: + 3 Range
-    Speed: 12
-    Range: 3
+    Speed: 15
+    Range: 0.1
     attackSpeed: 0
     Prices: 900
     goBack: 0
@@ -84,34 +84,34 @@ MonoBehaviour:
     WeaponImage: {fileID: 21300000, guid: 724e4328a30d97c4fa51f406c3ff007d, type: 3}
     WeaponName: Candy_1
     description: + 5 Range
-    Speed: 12
-    Range: 5
+    Speed: 15
+    Range: 0.1
     attackSpeed: 0
     Prices: 1000
     goBack: 0
     rotate: 0
-    IsEquipped: 1
+    IsEquipped: 0
   - WeaponModel: {fileID: 5080145839031872447, guid: bd383865d21be4ac6ba0e61f30d992a8, type: 3}
     Weapons: {fileID: 3470208553011183223, guid: a124fc9e82f704ea19dff7a50d115c7e, type: 3}
-    IsUnlocked: 0
+    IsUnlocked: 1
     WeaponImage: {fileID: 21300000, guid: 3af6351134a980440a9abb799a182e85, type: 3}
     WeaponName: Candy_2
     description: + 15 Attack Speed
-    Speed: 12
-    Range: 5
-    attackSpeed: 15
+    Speed: 15
+    Range: 0
+    attackSpeed: 1
     Prices: 1100
     goBack: 0
     rotate: 0
     IsEquipped: 0
   - WeaponModel: {fileID: 408194937789494320, guid: cd38ecdcd6c9948ef9524776ecf8be98, type: 3}
     Weapons: {fileID: 1589613177041184884, guid: 7d7d916a079c44a809dae7c7b7a10263, type: 3}
-    IsUnlocked: 0
+    IsUnlocked: 1
     WeaponImage: {fileID: 21300000, guid: 5a7af5be6b42eb940ac6d08116d0fe7e, type: 3}
     WeaponName: Candy_4
     description: + 10 Range
     Speed: 12
-    Range: 10
+    Range: 0.2
     attackSpeed: 0
     Prices: 1200
     goBack: 0
@@ -123,8 +123,8 @@ MonoBehaviour:
     WeaponImage: {fileID: 21300000, guid: 2dbdf917bda18854c9feb89adc0a75f7, type: 3}
     WeaponName: Hammer
     description: + 1 Range
-    Speed: 12
-    Range: 1
+    Speed: 15
+    Range: 0.1
     attackSpeed: 0
     Prices: 1300
     goBack: 0

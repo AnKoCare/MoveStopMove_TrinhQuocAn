@@ -6,6 +6,7 @@ public class Weapon : GameUnit
 {
     [SerializeField] private WeaponData weaponData;
     private Character Owner;
+    [SerializeField] private GameObject Hit_VFX;
     [SerializeField] Rigidbody rb;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private Transform weaponTransform;
@@ -13,6 +14,7 @@ public class Weapon : GameUnit
 
     private void FixedUpdate() 
     {
+        if(Owner == null) return;
         if(weaponData.GetWeapon(Owner.weaponType).rotate)
         {
             weaponTransform.eulerAngles += Vector3.up * rotationSpeed * Time.fixedDeltaTime;
@@ -54,21 +56,38 @@ public class Weapon : GameUnit
             Owner.ScaleUp();
             if(Owner == LevelManager.Ins.player)
             {
-                CameraFollow.Ins.SetUpWhenKill(4f);
-                LevelManager.Ins.player.UpCoin(5);
+                CameraFollow.Ins.SetUpWhenKill(2f);
+                LevelManager.Ins.player.SetNumberKillBot(1);
+                LevelManager.Ins.player.UpCoin((int)LevelManager.Ins.player.rateUpGold);
             }
+            else
+            {
+                Bot bot = Owner.GetComponent<Bot>();
+                bot.SetMoveSpeedBot();
+            }
+
+            if(character == LevelManager.Ins.player)
+            {
+                LevelManager.Ins.player.nameKiller = Owner.nameChar;
+            }
+            else
+            {
+                character.nameKiller = Owner.nameChar;
+            }
+
+            Owner.missionWaypoint.Setoffset(0.5f);
+            Owner.missionWayPoint2.Setoffset(0.5f);
 
             Owner.characterList.Remove(character);
             Owner.isAttack = false;
-
-            //Owner.OnKillUp();
+            Instantiate(Hit_VFX, TF.position + Vector3.up * 2f, Quaternion.identity);
             character.OnHit();
             OnDespawn();
         }
 
         if(other.CompareTag(Constant.TAG_OBSTACLE))
         {
-            Invoke("OnDespawn", 2f);
+            rb.velocity = Vector3.zero;
         }
     }
 

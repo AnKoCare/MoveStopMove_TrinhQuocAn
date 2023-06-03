@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SkinShop : UICanvas
 {
+    public Button BtnNextItem;
     public HairData hairData;
     public HairsType hairsType;
     private int currentIndex = 0;
@@ -15,6 +16,10 @@ public class SkinShop : UICanvas
     public Canvas buttonBuyHat;
     public Canvas buttonSelect;
     public List<Image> imageLock;
+
+    // private void Start() {
+    //     BtnNextItem.onClick.AddListener(() => Test(currentIndex));   
+    // }
 
     private void Update() 
     {
@@ -62,6 +67,11 @@ public class SkinShop : UICanvas
                 imageLock[i].gameObject.SetActive(true);
             }
         }
+    }
+
+
+    public void Test(int index) {
+
     }
 
     public override void SetDeActive()
@@ -229,10 +239,14 @@ public class SkinShop : UICanvas
         if(!hairData.GetHair((HairsType)currentIndex).IsEquipped)
         {
             LevelManager.Ins.player.RemoveHair();
+            if(LevelManager.Ins.player.suitType != SuitType.EmptySuit)
+            {
+                UnEquipItem();
+            }
             LevelManager.Ins.player.hairsType = (HairsType)currentIndex;
             LevelManager.Ins.player.SetHair(LevelManager.Ins.player.hairsType);
-            UnEquipItem();
             hairData.GetHair(LevelManager.Ins.player.hairsType).IsEquipped = true;
+            LevelManager.Ins.player.SetUpWeaponAndHairIndicator();
             for(int i = 0; i < 10; i ++)
             {
                 if(hairData.GetHair((HairsType)i).IsEquipped == true && hairData.GetHair((HairsType)i) != hairData.GetHair(LevelManager.Ins.player.hairsType))

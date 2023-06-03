@@ -39,3 +39,39 @@ public enum PantsType
     Vantim = 8,
     EmptyPant = 9
 }
+
+// public class Item : MonoBehaviour { 
+//     public Character owner;
+
+//     public virtual void OnInit(Character character) {
+//         owner = character;
+//     }
+
+//     public virtual void OnEquip() {
+
+//     }
+
+//     public virtual void OnUnEquip() {
+
+//     }
+// }
+// public class CowboyHatItem : Item {
+
+//     public float buffSpeed;
+//     public override void OnEquip()
+//     {
+//         base.OnEquip();
+//         (owner as PlayerController).moveSpeed = 3434;
+//     }
+
+//     public override void OnUnEquip()
+//     {
+//         (owner as PlayerController).moveSpeed = 3;
+//     }
+// }
+
+// [CreateAssetMenu(menuName = "Item Data", order = 3)]
+// public class ItemData : ScriptableObject {
+//     public Item Item;
+//     public Sprite ItemIcon;
+// }
